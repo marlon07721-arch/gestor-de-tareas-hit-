@@ -1,0 +1,74 @@
+/*
+ * RESPONSIVE: cómo se adapta la aplicación a pantallas pequeñas.
+ * Responsable: Juan y Marlon
+ *
+ * TODAS las reglas para tablet y celular están en este archivo, ordenadas
+ * de la pantalla más ancha a la más angosta. Se aplica de último en cada
+ * componente, así que sus reglas ganan sobre las anteriores.
+ *
+ * Como este archivo se comparte entre todos los componentes, cada regla dice
+ * a qué componente pertenece con :host(nombre-del-componente).
+ * Las reglas sin :host(...) son de piezas compartidas (ventanas).
+ *
+ *   Tablet y celular grande ....... hasta 640px
+ *   Celular ....................... hasta 560px
+ *   Celular pequeño ............... hasta 480px
+ *   Celular muy angosto ........... hasta 400px
+ */
+
+/* ============ TABLET Y CELULAR GRANDE (hasta 640px) ============ */
+@media (max-width: 640px) {
+  /* Página: la barra de progreso baja a su propia fila y el título se achica */
+  :host(task-app) .progress { flex-basis: 100%; }
+  :host(task-app) h1 { font-size: 1.625rem; }
+
+  /* Barra de botones: dos columnas; "Nueva tarea" ocupa toda la fila */
+  :host(task-toolbar) .actions { display: grid; grid-template-columns: 1fr 1fr; }
+  :host(task-toolbar) .actions .btn--primary { grid-column: 1 / -1; }
+  :host(task-toolbar) .actions .spacer { display: none; }
+  /* Filtros a todo el ancho */
+  :host(task-toolbar) .category-filter { flex-basis: 100%; }
+  :host(task-toolbar) .filters { display: flex; width: 100%; }
+  :host(task-toolbar) .filters label { flex: 1; }
+  :host(task-toolbar) .chip { width: 100%; padding-inline: .375rem; }
+}
+
+/* ============ CELULAR (hasta 560px) ============ */
+@media (max-width: 560px) {
+  /* Ventanas: salen desde abajo y ocupan todo el ancho */
+  dialog {
+    width: 100vw; max-width: 100vw; max-height: 92vh; max-height: 92dvh;
+    margin: auto 0 0; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .dialog__header, .dialog__body, .dialog__footer { padding-inline: 1rem; }
+  /* Los botones del pie se reparten el ancho */
+  .dialog__footer .btn { flex: 1; }
+
+  /* Importar: el contador y la categoría ocupan cada uno su fila */
+  :host(import-modal) .selected-count,
+  :host(import-modal) .category-pick { flex-basis: 100%; }
+  :host(import-modal) .category-pick .input { flex: 1; max-width: none; }
+
+  /* Avisos: ocupan todo el ancho de la pantalla */
+  :host(toast-message) { left: 1rem; }
+  :host(toast-message) .region { justify-items: stretch; }
+}
+
+/* ============ CELULAR PEQUEÑO (hasta 480px) ============ */
+@media (max-width: 480px) {
+  /* Tarjeta de tarea: menos espacio y los botones uno encima del otro */
+  :host(task-item) .item { gap: .625rem; padding: .75rem .5rem .75rem .75rem; align-items: start; }
+  :host(task-item) .check { margin-top: .125rem; }
+  :host(task-item) .actions { flex-direction: column; gap: 0; }
+}
+
+/* ============ CELULAR MUY ANGOSTO (hasta 400px) ============ */
+@media (max-width: 400px) {
+  /* Barra de botones: un botón por fila; los filtros pueden bajar a otra fila */
+  :host(task-toolbar) .actions { grid-template-columns: 1fr; }
+  :host(task-toolbar) .filters { flex-wrap: wrap; }
+  :host(task-toolbar) .filters label { flex: 1 1 auto; }
+
+  /* Categorías: se oculta "N tareas" para que quepa el nombre */
+  :host(category-manager) .count { display: none; }
+}

@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+.vscode/
+.qodo/
+node_modules/
+*.log

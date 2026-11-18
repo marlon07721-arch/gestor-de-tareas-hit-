@@ -1,0 +1,40 @@
+/*
+ * FORMULARIOS: cajas de texto, listas desplegables, etiquetas y mensajes de error.
+ * Responsable: Marlon
+ *
+ * Uso en el HTML:
+ *   <div class="field">
+ *     <label for="x">Nombre <span class="req">*</span></label>
+ *     <input class="input" id="x" type="text">
+ *     <p class="hint">Ayuda</p>
+ *     <p class="error" id="x-error"></p>
+ *   </div>
+ */
+
+/* Cada campo: etiqueta, caja y mensaje, uno debajo del otro */
+.field { display: grid; gap: .375rem; margin-bottom: 1.125rem; }
+.field > label { font-weight: 600; font-size: .9375rem; }
+
+/* Asterisco rojo de campo obligatorio */
+.req { color: var(--color-danger); }
+
+/* CAJAS DE TEXTO, FECHA y LISTAS DESPLEGABLES */
+.input {
+  width: 100%; min-width: 0; min-height: 2.75rem; padding: .5rem .75rem;
+  border: 1px solid var(--color-border-strong); border-radius: var(--radius-md);
+  background: var(--color-surface); color: inherit; font: inherit;
+}
+.input::placeholder { color: var(--color-text-muted); }
+/* Si el campo tiene error, el borde se pone rojo */
+.input[aria-invalid="true"] { border-color: var(--color-danger); }
+
+/* Ayuda gris debajo del campo (y contador de caracteres) */
+.hint { display: flex; justify-content: space-between; gap: 1rem; font-size: .8125rem; color: var(--color-text-muted); }
+
+/* Mensaje de error en rojo debajo del campo; se oculta si está vacío */
+.error { display: flex; gap: .375rem; align-items: center; margin: 0; font-size: .8125rem; font-weight: 600; color: var(--color-danger); }
+.error:empty { display: none; }
+.error svg { width: 1rem; height: 1rem; flex: none; }
+
+/* Caja de texto de varias líneas (descripción): crece solo hacia abajo */
+textarea.input { min-height: 5.5rem; resize: vertical; line-height: 1.45; }

@@ -1,0 +1,50 @@
+/*
+ * BOTONES: todos los botones de la aplicación están aquí.
+ * Responsable: Juan
+ *
+ * Uso en el HTML:
+ *   <button class="btn">Normal</button>
+ *   <button class="btn btn--primary">Principal (morado)</button>
+ *   <button class="btn btn--danger">Peligro (texto rojo)</button>
+ *   <button class="btn btn--danger-solid">Peligro (relleno rojo)</button>
+ *   <button class="btn btn--ghost icon-btn">ícono</button>
+ *   <button class="btn btn--ghost icon-btn btn--delete">papelera</button>
+ */
+
+/* Estilo general de todos los botones */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 2.5rem; padding: .5rem 1rem;
+  border: 1px solid var(--color-border-strong); border-radius: var(--radius-md);
+  background: var(--color-surface); color: var(--color-text);
+  font: inherit; font-size: .9375rem; font-weight: 600; line-height: 1.2;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn:hover:not(:disabled) { background: var(--color-surface-hover); }
+/* Botón deshabilitado: más claro y sin clic */
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+/* Ícono dentro del botón */
+.btn svg { width: 1.125rem; height: 1.125rem; flex: none; }
+
+/* Principal (morado): Nueva tarea, Guardar, Importar */
+.btn--primary { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-on-primary); }
+.btn--primary:hover:not(:disabled) { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+
+/* Peligro con texto rojo: Vaciar lista */
+.btn--danger { color: var(--color-danger); border-color: var(--color-danger-border); }
+.btn--danger:hover:not(:disabled) { background: var(--color-danger-soft); }
+
+/* Peligro relleno de rojo: confirmar Eliminar */
+.btn--danger-solid { background: var(--color-danger); border-color: var(--color-danger); color: var(--color-on-danger); }
+.btn--danger-solid:hover:not(:disabled) { background: var(--color-danger-hover); border-color: var(--color-danger-hover); }
+
+/* Transparente y sin borde: íconos de editar, eliminar y cerrar */
+.btn--ghost { background: transparent; border-color: transparent; color: var(--color-text-muted); }
+.btn--ghost:hover:not(:disabled) { color: var(--color-text); }
+
+/* Papelera: al pasar el mouse se pone roja */
+.btn--delete:hover:not(:disabled) { color: var(--color-danger); background: var(--color-danger-soft); }
+
+/* Botón cuadrado que solo tiene un ícono */
+.icon-btn { width: 2.5rem; padding: 0; }

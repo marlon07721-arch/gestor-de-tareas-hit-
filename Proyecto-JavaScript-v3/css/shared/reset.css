@@ -1,0 +1,30 @@
+/*
+ * RESET: reglas básicas que necesitan TODOS los componentes.
+ * Responsable: Juan
+ *
+ * El Shadow DOM aísla los estilos: el CSS de la página no entra al componente.
+ * Por eso este archivo se aplica dentro de cada componente (ver js/utils/styles.js).
+ */
+
+/* Tipo de letra y color del texto de cada componente */
+:host { box-sizing: border-box; font-family: var(--font-sans); color: var(--color-text); }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Lo que tiene el atributo hidden nunca se muestra */
+[hidden] { display: none !important; }
+
+/* Texto solo para lectores de pantalla (invisible en la pantalla) */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Contorno visible cuando se navega con el teclado */
+.btn:focus-visible, .input:focus-visible {
+  outline: 3px solid var(--color-focus); outline-offset: 2px;
+}
+
+/* Si la persona pidió menos movimiento en su sistema, se quitan animaciones y transiciones */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

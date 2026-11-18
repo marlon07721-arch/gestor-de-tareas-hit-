@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Codificación de caracteres: permite usar tildes y la ñ -->
+  <meta charset="utf-8">
+  <!-- Hace que la página se adapte al ancho de la pantalla del celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Descripción corta de la página (la usan los buscadores) -->
+  <meta name="description" content="Aplicación web para gestionar tareas: crear, editar, eliminar, importar desde una API pública y filtrar por estado.">
+  <!-- Color de la barra del navegador en el celular -->
+  <meta name="theme-color" content="#4f46e5">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Gestor de tareas</title>
+  <!-- Ícono de la pestaña: un chulo blanco sobre fondo morado, dibujado en SVG -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <!-- Estilos de la página: variables (colores y modo oscuro) y estilos generales.
+       Los estilos de cada componente se cargan desde js/utils/styles.js -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/global.css">
+  <!-- Código JavaScript de la aplicación (se carga como módulo) -->
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- Componente principal: aquí se dibuja toda la aplicación -->
+  <task-app>
+    <!-- Contenido de respaldo mientras cargan los componentes -->
+    <p class="app-loading">Cargando tareas…</p>
+  </task-app>
+
+  <!-- Este mensaje solo aparece si el navegador tiene JavaScript desactivado -->
+  <noscript>
+    <p class="app-loading">Esta aplicación necesita JavaScript activado para funcionar.</p>
+  </noscript>
+</body>
+</html>

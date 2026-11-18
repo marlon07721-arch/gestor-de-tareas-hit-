@@ -1,0 +1,20 @@
+/*
+ * <confirm-dialog>: ventana para confirmar acciones (eliminar, vaciar...).
+ * Responsable: Juan
+ */
+
+/* Ventana pequeña: 440px */
+dialog { width: min(440px, calc(100vw - 2rem)); }
+
+/* Contenido: ícono a la izquierda; título y mensaje a la derecha */
+.content { display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem 1.5rem .75rem; }
+/* Círculo con el ícono de alerta */
+.icon {
+  display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--color-primary-soft); color: var(--color-primary);
+}
+.icon svg { width: 1.375rem; height: 1.375rem; }
+/* En acciones peligrosas el ícono se pone rojo */
+.is-danger .icon { background: var(--color-danger-soft); color: var(--color-danger); }
+.message { margin: .375rem 0 0; color: var(--color-text-muted); }
+.dialog__footer { border-top: 0; padding-top: .75rem; }

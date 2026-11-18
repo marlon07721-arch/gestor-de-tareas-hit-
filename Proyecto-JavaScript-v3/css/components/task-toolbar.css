@@ -1,0 +1,51 @@
+/*
+ * <task-toolbar>: fila de botones, buscador y filtros.
+ * Responsable: Marlon
+ * Los botones usan css/shared/buttons.css y las cajas css/shared/forms.css.
+ */
+
+:host { display: block; }
+
+/* Contenedor: fila de botones arriba y buscador con filtros abajo */
+.toolbar { display: grid; gap: .875rem; }
+
+/* FILA DE BOTONES: Nueva tarea, Importar, Categorías, Marcar terminadas y Vaciar lista */
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+/* Espacio vacío que empuja los dos últimos botones a la derecha */
+.actions .spacer { flex: 1; }
+
+/* Fila del buscador y los filtros */
+.filters-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* BUSCADOR: la lupa va encima de la caja, a la izquierda */
+.search { position: relative; flex: 1 1 260px; }
+.search svg {
+  position: absolute; left: .875rem; top: 50%; transform: translateY(-50%);
+  width: 1.125rem; height: 1.125rem; color: var(--color-text-muted); pointer-events: none;
+}
+/* Deja espacio a la izquierda para la lupa */
+.search .input { padding-left: 2.625rem; }
+
+/* FILTRO POR CATEGORÍA */
+.category-filter { flex: 0 1 220px; }
+
+/* FILTRO POR ESTADO: Todas, Pendientes y Completadas */
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.filters {
+  display: inline-flex; gap: .25rem; padding: .25rem;
+  background: var(--color-surface-muted); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+/* Cada filtro es un radio invisible encima de un "chip" que sí se ve */
+.filters label { position: relative; display: flex; }
+.filters input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.chip {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  min-height: 2.125rem; padding: .25rem .75rem; border-radius: var(--radius-sm);
+  font-size: .875rem; font-weight: 600; color: var(--color-text-muted); white-space: nowrap;
+}
+/* Opción elegida: fondo blanco y sombra */
+.filters input:checked + .chip { background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-sm); }
+.filters input:focus-visible + .chip { outline: 3px solid var(--color-focus); outline-offset: 1px; }
+/* Circulito con el número de tareas de cada opción */
+.count { min-width: 1.5rem; padding: 0 .375rem; border-radius: 999px; background: var(--color-border); font-size: .75rem; }

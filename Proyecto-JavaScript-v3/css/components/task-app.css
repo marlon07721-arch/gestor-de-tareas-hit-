@@ -1,0 +1,33 @@
+/*
+ * <task-app>: estructura de la página (encabezado, progreso, contenido y pie).
+ * Responsable: Juan
+ */
+
+/* El componente ocupa todo el ancho disponible */
+:host { display: block; }
+
+/* Contenedor central: máximo 960px de ancho y centrado */
+.shell { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 5rem; }
+
+/* ENCABEZADO: título a la izquierda y barra de progreso a la derecha */
+.app-header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.75rem; }
+h1 { margin: 0; font-size: 2rem; line-height: 1.15; }
+.subtitle { margin: .375rem 0 0; color: var(--color-text-muted); }
+
+/* BARRA DE PROGRESO: texto con el porcentaje y la barra */
+.progress { flex: 0 1 260px; min-width: 200px; }
+.progress__label { display: flex; justify-content: space-between; font-size: .875rem; color: var(--color-text-muted); margin-bottom: .375rem; }
+.progress__label strong { color: var(--color-text); }
+/* Fondo gris de la barra */
+.progress__track { height: .5rem; border-radius: 999px; background: var(--color-border); overflow: hidden; }
+/* Parte verde que crece según las tareas completadas */
+.progress__bar { height: 100%; width: 0; border-radius: inherit; background: var(--color-success); transition: width .3s ease; }
+
+/* CONTENIDO: barra de botones, resumen y lista */
+main { display: grid; gap: 1rem; }
+/* Resumen (ej.: 5 tareas · 2 pendientes); se oculta si está vacío */
+.summary { margin: .25rem 0 0; font-size: .875rem; color: var(--color-text-muted); }
+.summary:empty { display: none; }
+
+/* PIE DE PÁGINA */
+footer { margin-top: 2.5rem; text-align: center; font-size: .8125rem; color: var(--color-text-muted); }

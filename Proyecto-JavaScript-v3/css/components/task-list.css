@@ -1,0 +1,21 @@
+/*
+ * <task-list>: la lista de tareas y los mensajes de lista vacía.
+ * Responsable: Marlon
+ */
+
+:host { display: block; }
+
+/* LISTA: una tarea debajo de otra, con un pequeño espacio */
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+
+/* LISTA VACÍA / SIN RESULTADOS: caja con borde punteado y texto centrado */
+.empty {
+  display: grid; justify-items: center; gap: .5rem;
+  padding: 3rem 1.5rem; text-align: center;
+  background: var(--color-surface); border: 2px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg); color: var(--color-text-muted);
+}
+.empty > svg { width: 3rem; height: 3rem; color: var(--color-primary); }
+.empty h2 { margin: .25rem 0 0; font-size: 1.125rem; color: var(--color-text); }
+.empty p { margin: 0 0 .75rem; max-width: 36ch; }
+.empty .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }

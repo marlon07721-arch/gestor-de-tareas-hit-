@@ -1,0 +1,45 @@
+/*
+ * <category-manager>: ventana para crear, renombrar y eliminar categorías.
+ * Responsable: Marlon
+ * El punto de color de cada categoría está en css/shared/badges.css.
+ */
+
+/* Ventana de 520px */
+dialog { width: min(520px, calc(100vw - 2rem)); }
+
+/* LÍNEA DE ESTADO: confirma cada cambio (los avisos de la app quedarían detrás de la ventana) */
+.status { margin: 0 0 1rem; padding: .5rem .75rem; border-radius: var(--radius-md); font-size: .875rem; font-weight: 600; }
+.status:empty { display: none; }
+.status--success { background: var(--color-success-soft); color: var(--color-success); }
+.status--error { background: var(--color-danger-soft); color: var(--color-danger); }
+
+/* CREAR: caja de texto y botón Agregar en una fila */
+.create { margin-bottom: 1.25rem; }
+.row { display: flex; gap: .5rem; }
+.row .input, .line .input { flex: 1; }
+
+/* LISTA de categorías */
+.list-title { margin: 0 0 .5rem; font-size: .8125rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-muted); }
+ul { list-style: none; margin: 0; padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+li { display: grid; gap: .375rem; padding: .5rem .5rem .5rem .875rem; }
+li + li { border-top: 1px solid var(--color-border); }
+/* Cada fila: punto de color, nombre, número de tareas y botones */
+.line { display: flex; align-items: center; gap: .75rem; min-height: 2.5rem; }
+.name { flex: 1; min-width: 0; font-weight: 600; overflow-wrap: anywhere; }
+.count { font-size: .8125rem; color: var(--color-text-muted); white-space: nowrap; }
+.actions { display: flex; gap: .125rem; }
+/* Categoría del sistema (Importadas): etiqueta con candado en lugar de los botones */
+.system {
+  display: inline-flex; align-items: center; gap: .25rem; padding: .125rem .5rem; margin-right: .375rem;
+  border-radius: 999px; background: var(--color-surface-muted); border: 1px solid var(--color-border);
+  font-size: .75rem; font-weight: 600; color: var(--color-text-muted); white-space: nowrap;
+}
+.system svg { width: .75rem; height: .75rem; }
+/* La fila de la categoría del sistema mide lo mismo que las que tienen botones */
+li.is-system .line { min-height: 2.5rem; }
+
+/* Mientras se renombra, la caja es un poco más baja */
+li.is-editing .input { min-height: 2.5rem; }
+
+/* Mensaje cuando no hay categorías */
+.empty { margin: 0; padding: 1.5rem 1rem; text-align: center; color: var(--color-text-muted); border: 1px dashed var(--color-border-strong); border-radius: var(--radius-md); }

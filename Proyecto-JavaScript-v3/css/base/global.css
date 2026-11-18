@@ -1,0 +1,33 @@
+/*
+ * ESTILOS DE LA PÁGINA (fuera de los componentes): body y mensaje de carga.
+ * Responsable: Juan
+ */
+
+/* El ancho y alto de cada elemento incluye su borde y su relleno */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Evita que el celular agrande el texto por su cuenta */
+html { -webkit-text-size-adjust: 100%; }
+
+/* Estilos de toda la página: sin margen, color de fondo, color de texto y tipo de letra */
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh; /* dvh descuenta la barra del navegador en el celular */
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* El componente principal se muestra como un bloque */
+task-app { display: block; }
+
+/* Texto Cargando tareas mientras carga la aplicación */
+.app-loading {
+  margin: 4rem auto;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+

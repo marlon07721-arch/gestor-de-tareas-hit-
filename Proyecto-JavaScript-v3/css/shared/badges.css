@@ -1,0 +1,51 @@
+/*
+ * ETIQUETAS (badges) y COLORES DE CATEGORÍA.
+ * Responsable: Marlon
+ *
+ * Uso en el HTML:
+ *   <span class="badge badge--pending">Pendiente</span>
+ *   <span class="badge badge--cat" data-color="3">Estudio</span>
+ *   <span class="dot" data-color="3"></span>   (punto de color)
+ */
+
+/* Etiqueta: texto pequeño dentro de una "píldora" */
+.badge {
+  display: inline-flex; align-items: center; gap: .25rem;
+  padding: .0625rem .5rem; border-radius: 999px;
+  font-size: .75rem; font-weight: 600; white-space: nowrap;
+}
+.badge svg { width: .75rem; height: .75rem; flex: none; }
+
+/* Estados: Pendiente (naranja), Completada (verde), Importada / Ya importada (azul) */
+.badge--pending { background: var(--color-warning-soft); color: var(--color-warning); }
+.badge--done { background: var(--color-success-soft); color: var(--color-success); }
+.badge--api { background: var(--color-info-soft); color: var(--color-info); }
+
+/* CATEGORÍA: el nombre largo se corta con "…" */
+.badge--cat { max-width: 100%; }
+/* Cuando la etiqueta es un botón (tarjeta de tarea): al pulsarla filtra por esa categoría */
+button.badge--cat { border: 0; font-family: inherit; line-height: inherit; cursor: pointer; }
+button.badge--cat:hover { filter: brightness(.95); text-decoration: underline; }
+button.badge--cat:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.badge--cat span { overflow: hidden; text-overflow: ellipsis; }
+
+/* Punto de color (lista de la ventana Categorías) */
+.dot { flex: none; width: .75rem; height: .75rem; border-radius: 50%; }
+
+/* Color de cada categoría según su número (variables --cat-N de base/variables.css) */
+.badge--cat[data-color="1"] { background: var(--cat-1-soft); color: var(--cat-1); }
+.badge--cat[data-color="2"] { background: var(--cat-2-soft); color: var(--cat-2); }
+.badge--cat[data-color="3"] { background: var(--cat-3-soft); color: var(--cat-3); }
+.badge--cat[data-color="4"] { background: var(--cat-4-soft); color: var(--cat-4); }
+.badge--cat[data-color="5"] { background: var(--cat-5-soft); color: var(--cat-5); }
+.badge--cat[data-color="6"] { background: var(--cat-6-soft); color: var(--cat-6); }
+.dot[data-color="1"] { background: var(--cat-1); }
+.dot[data-color="2"] { background: var(--cat-2); }
+.dot[data-color="3"] { background: var(--cat-3); }
+.dot[data-color="4"] { background: var(--cat-4); }
+.dot[data-color="5"] { background: var(--cat-5); }
+.dot[data-color="6"] { background: var(--cat-6); }
+
+/* Categoría del sistema "Importadas": azul, igual que la etiqueta "Importada" */
+.badge--cat[data-color="import"] { background: var(--color-info-soft); color: var(--color-info); }
+.dot[data-color="import"] { background: var(--color-info); }

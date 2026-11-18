@@ -1,0 +1,63 @@
+/*
+ * <task-item>: la tarjeta de una tarea.
+ * Responsable: Marlon
+ * Las etiquetas (Pendiente, Completada, Importada y categoría) están en css/shared/badges.css.
+ */
+
+:host { display: block; }
+
+/* TARJETA: círculo a la izquierda, contenido al centro y botones a la derecha */
+.item {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .875rem;
+  padding: .875rem 1rem;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+}
+.item:hover { border-color: var(--color-border-strong); }
+/* Tarea completada: fondo un poco más gris */
+.item.is-completed { background: var(--color-surface-muted); }
+
+/* CÍRCULO para marcar la tarea: es un checkbox con otro aspecto */
+.check {
+  appearance: none; display: grid; place-content: center; flex: none;
+  width: 1.5rem; height: 1.5rem; margin: 0;
+  border: 2px solid var(--color-border-strong); border-radius: 50%;
+  background: var(--color-surface); cursor: pointer;
+}
+.check::before {
+  content: ""; width: .75rem; height: .75rem; background: var(--color-on-success);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); /* forma de palomita */
+  transform: scale(0);
+}
+.check:hover:not(:disabled) { border-color: var(--color-success); }
+.check:checked { background: var(--color-success); border-color: var(--color-success); }
+.check:checked::before { transform: scale(1); }
+/* Deshabilitado (tareas importadas) */
+.check:disabled { cursor: not-allowed; opacity: .6; }
+.check:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+
+/* CONTENIDO: título y datos */
+.content { min-width: 0; }
+.title { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+/* Si está completada, el título se tacha */
+.is-completed .title { color: var(--color-text-muted); text-decoration: line-through; }
+
+/* DESCRIPCIÓN debajo del título: gris, respeta los saltos de línea y muestra máximo 3 líneas */
+.description {
+  margin: .25rem 0 0; font-size: .875rem; color: var(--color-text-muted);
+  white-space: pre-line; overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
+}
+
+/* Fila de datos debajo del título: etiquetas, fecha e ID */
+.meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .375rem .75rem;
+  margin: .375rem 0 0; font-size: .8125rem; color: var(--color-text-muted);
+}
+.date { display: inline-flex; align-items: center; gap: .3rem; }
+.date svg { width: .875rem; height: .875rem; }
+/* ID con letra de ancho fijo */
+.id { font-family: Consolas, monospace; font-size: .75rem; }
+
+/* BOTONES editar y eliminar */
+.actions { display: flex; gap: .25rem; }
