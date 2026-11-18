@@ -1,6 +1,6 @@
 /*
  * VARIABLES DE DISEÑO (tokens): colores, letra, bordes y sombras.
- * Responsable: Juan
+ * Resp
  *
  * Es el ÚNICO lugar donde se escriben colores. El resto de archivos CSS
  * usan estas variables con var(--nombre). Las variables CSS sí atraviesan
